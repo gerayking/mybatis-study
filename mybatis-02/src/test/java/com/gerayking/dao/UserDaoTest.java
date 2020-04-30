@@ -3,11 +3,19 @@ package com.gerayking.dao;
 import com.gerayking.pojo.User;
 import com.gerayking.utils.MybatisUtils;
 import org.apache.ibatis.session.SqlSession;
+import org.apache.log4j.Logger;
 import org.junit.Test;
 
 import java.util.List;
 
 public class UserDaoTest {
+    @Test
+    public void log4jtest(){
+        Logger logger = Logger.getLogger(User.class);
+        logger.info("info:进入");
+        logger.debug("debug:进入");
+        logger.error("error:进入");
+    }
     @Test
     public void getUserList(){
         //第一步获取sqlsession
@@ -18,6 +26,7 @@ public class UserDaoTest {
         for (User user : userList) {
             System.out.println(user);
         }
+        sqlSession.close();
     }
     @Test
     public void getUserById(){
